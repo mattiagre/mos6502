@@ -3,6 +3,8 @@
 /// 
 
 #include <cstdint>
+#include <sstream>
+#include <iomanip>
 #include <map>
 
 #include "../mos6502.h"
@@ -12,8 +14,6 @@
 template <typename Integer, std::streamsize length = sizeof(Integer) * 2>
 std::string to_hex(Integer value, const std::string& prefix = "$", bool uppercase = true)
 {
-	static_assert(std::is_integral_v<Integer>, "The \"Integer\" type has to be a integral one");
-
 	std::stringstream hex;
 	hex << (uppercase ? std::uppercase : std::nouppercase) << prefix << std::setw(length)
 		<< std::setfill('0') << std::hex << static_cast<uint64_t>(value);

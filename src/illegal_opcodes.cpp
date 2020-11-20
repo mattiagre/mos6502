@@ -209,7 +209,7 @@ bool mos6502::RRA()
 
 	write(abs_address, fetched);
 
-	uint16_t addition = static_cast<uint16_t>(A) + static_cast<uint16_t>(fetched) + getFlagStatus(C)
+	uint16_t addition = static_cast<uint16_t>(A) + static_cast<uint16_t>(fetched) + getFlagStatus(C);
 
 	setFlagStatus(C, addition > 0xFF);
 	setFlagStatus(Z, (addition & 0xFF) == 0);
