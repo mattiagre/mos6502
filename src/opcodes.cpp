@@ -29,6 +29,7 @@ bool mos6502::ADC()
 	}
 	else
 	{
+		// Implementation from http://www.6502.org/tutorials/decimal_mode.html#A
 		uint8_t old_A = A;
 		uint16_t AL = (A & 0x0F) + (fetched & 0x0F) + getFlagStatus(C);
 
@@ -776,6 +777,7 @@ bool mos6502::SBC()
 	}
 	else
 	{
+		// Implementation from http://www.6502.org/tutorials/decimal_mode.html#A
 		uint8_t old_A = A;
 		uint16_t temp = A - fetched + getFlagStatus(C) - 1;
 
