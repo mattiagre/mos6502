@@ -126,7 +126,7 @@ bool mos6502::ISC()
 	++fetched;
 	write(abs_address, fetched);
 
-	uint16_t subtraction = static_cast<uint16_t>(A) + (static_cast<uint16_t>(fetched) ^ 0x00FF) + (getFlagStatus(C) ? 1 : 0);
+	uint16_t subtraction = static_cast<uint16_t>(A) + (static_cast<uint16_t>(fetched) ^ 0x00FF) + getFlagStatus(C);
 	A = subtraction & 0xFF;
 
 	setFlagStatus(C, subtraction & 0xFF00);
@@ -209,7 +209,7 @@ bool mos6502::RRA()
 
 	write(abs_address, fetched);
 
-	uint16_t addition = static_cast<uint16_t>(A) + static_cast<uint16_t>(fetched) + (getFlagStatus(C) ? 1 : 0);
+	uint16_t addition = static_cast<uint16_t>(A) + static_cast<uint16_t>(fetched) + getFlagStatus(C)
 
 	setFlagStatus(C, addition > 0xFF);
 	setFlagStatus(Z, (addition & 0xFF) == 0);
