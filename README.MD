@@ -9,5 +9,5 @@ Provides a class named `mos6502` that emulates a MOS 6502 and a simple bus with 
 - A disassembly routine that converts bytes to instructions' string representation 
 
 #### Test successfully passed:
-- [Klaus Dormann test](https://github.com/Klaus2m5/6502_65C02_functional_tests] 
+- [Klaus Dormann test](https://github.com/Klaus2m5/6502_65C02_functional_tests) 
 - [Nestest](https://www.qmtpro.com/~nes/misc/nestest.txt), with correct cycles, disabling BCD
