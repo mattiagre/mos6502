@@ -44,7 +44,7 @@ public:
 
 	// A disassambly routine that maps every address from start_addr to end_addr to std::string
 	// that contains the instruction in that address 
-	std::map<uint16_t, std::string> disassemble(uint16_t start_addr, uint16_t end_addr);
+	std::map<uint16_t, std::string> disassemble(uint16_t start_addr, uint16_t end_addr) const;
 
 public:
 
@@ -59,7 +59,7 @@ public:
 	uint16_t  PC = 0x00; // Program Counter
 
 
-private:
+public:
 	// Flags of the status register
 	// bit: 7 6 5 4 3 2 1 0 
 	//		N V U B D I Z C
@@ -83,8 +83,9 @@ private:
 		N = 1 << 7	// The result is negative
 	};
 
+private:
 	// Get the status of the flag (true: set, false: clear)
-	bool getFlagStatus(Flags flag);
+	bool getFlagStatus(Flags flag) const;
 	// Sets or clears the flag according to set variable
 	void setFlagStatus(Flags flag, bool set);
 	
@@ -177,7 +178,7 @@ private:
 	// Writes a byte in at given address
 	void write(uint16_t address, uint8_t data);
 	// Reads the byte pointed by the address
-	uint8_t read(uint16_t address);
+	uint8_t read(uint16_t address) const;
 
 
 private:

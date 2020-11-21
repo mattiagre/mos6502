@@ -22,7 +22,7 @@ std::string to_hex(Integer value, const std::string& prefix = "$", bool uppercas
 }
 
 
-std::map<uint16_t, std::string> mos6502::disassemble(uint16_t start_addr, uint16_t end_addr)
+std::map<uint16_t, std::string> mos6502::disassemble(uint16_t start_addr, uint16_t end_addr) const
 {
 	std::map<uint16_t, std::string> result;
 
@@ -141,8 +141,6 @@ std::map<uint16_t, std::string> mos6502::disassemble(uint16_t start_addr, uint16
 			line << " " << to_hex<uint16_t>(address + data);
 		}
 
-		if (line.str().size() < 8)
-			line << '\t';
 		result[inst_address] = line.str();
 	}
 

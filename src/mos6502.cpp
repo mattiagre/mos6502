@@ -35,7 +35,7 @@ mos6502::mos6502(Bus* bus)
 { }
 
 
-bool mos6502::getFlagStatus(Flags flag) 
+bool mos6502::getFlagStatus(Flags flag) const
 {
 	return P & flag;
 }
@@ -164,7 +164,7 @@ void mos6502::write(uint16_t address, uint8_t data)
 }
 
 
-uint8_t mos6502::read(uint16_t address)
+uint8_t mos6502::read(uint16_t address) const
 {
 	return bus->read(address, true);
 }
