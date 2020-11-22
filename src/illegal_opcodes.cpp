@@ -52,7 +52,7 @@ bool mos6502::ARR()
 	// Sets V and C flag in a different way
 	setFlagStatus(C, A & (1 << 6));
 	setFlagStatus(Z, A == 0x00);
-	setFlagStatus(V, (A & (1 << 5) ^ (A & (1 << 6))));
+	setFlagStatus(V, ((A & (1 << 5)) ^ (A & (1 << 6))));
 	setFlagStatus(N, A & 0x80);
 
 	return false;
