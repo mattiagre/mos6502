@@ -12,13 +12,15 @@
 
 // Converts a integer value to a hex-formatted string, with a custom prefix and length 
 template <typename Integer, std::streamsize length = sizeof(Integer) * 2>
-std::string to_hex(Integer value, const std::string& prefix = "$", bool uppercase = true)
+std::string to_hex(Integer value, const std::string& prefix = "$")
 {
-	std::stringstream hex;
-	hex << (uppercase ? std::uppercase : std::nouppercase) << prefix << std::setw(length)
-		<< std::setfill('0') << std::hex << static_cast<uint64_t>(value);
+	static_assert(std::is_integral_v<Integer>, "The \"Integer\" type has to be a integral one");
 
-	return hex.str();
+	static char digits[] = "0123456789ABCDEF";
+	std::string hex = prefix + std::string{length, '0'};
+	for (std::size_t i = 0, j = (length - 1) * 4; i < length; ++i, j -= 4) 
+		hex[prefix.length() + i] = digits[(value >> j) & 0x0F];
+	return hex;
 }
 
 
